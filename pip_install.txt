@@ -1,0 +1,5 @@
+#LLM Zoomcamp 7.1 - Fitness Assistan Project video
+## 6:04
+pip install pipenv
+## 7:05
+pipenv install openai scikit-learn pandas flask
