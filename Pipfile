@@ -8,6 +8,7 @@ openai = "*"
 scikit-learn = "*"
 pandas = "*"
 flask = "*"
+jupyter-contrib-nbextensions = "*"
 
 [dev-packages]
 tqdm = "*"
