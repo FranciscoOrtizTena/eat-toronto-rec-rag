@@ -3,3 +3,13 @@
 pip install pipenv
 ## 7:05
 pipenv install openai scikit-learn pandas flask
+## 7:51
+pipenv install --dev tqdm notebook==7.1.2 ipywidgets
+## 16:41 
+pipenv run jupyter notebook
+
+#LLM Zoomcamp 7.2 - Evluating retrieval
+## 33:09
+pipenv install --dev hyperopt
+## 36:50
+pipenv install --dev pkg_resources

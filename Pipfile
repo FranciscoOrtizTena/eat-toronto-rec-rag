@@ -14,6 +14,7 @@ jupyter-contrib-nbextensions = "*"
 tqdm = "*"
 notebook = "==7.1.2"
 ipywidgets = "*"
+hyperopt = {extras = ["all"], version = "*"}
 
 [requires]
 python_version = "3.12"
