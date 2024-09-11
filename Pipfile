@@ -9,6 +9,8 @@ scikit-learn = "*"
 pandas = "*"
 flask = "*"
 jupyter-contrib-nbextensions = "*"
+elasticsearch = "*"
+sentence-transformers = "*"
 
 [dev-packages]
 tqdm = "*"
