@@ -11,12 +11,19 @@ flask = "*"
 jupyter-contrib-nbextensions = "*"
 elasticsearch = "*"
 sentence-transformers = "*"
+jupyter = "*"
+nbconvert = "*"
+notebook = "*"
+psycopg2-binary = "*"
+python-dotenv = "*"
+gunicorn = "*"
 
 [dev-packages]
 tqdm = "*"
 notebook = "==7.1.2"
 ipywidgets = "*"
 hyperopt = {extras = ["all"], version = "*"}
+requests = "*"
 
 [requires]
 python_version = "3.12"
