@@ -331,7 +331,7 @@ pipenv run jupyter notebooks
 
 There are the following notebooks:
 
-- [`clean_data.ipynb`](notebooks/clean_data.ipynb) A script to clean the data
+- [`clean_data.ipynb`](bonus_data_generation/clean_data.ipynb) A script to clean the data
 - [`rag-test.ipynb`](notebooks/rag-test.ipynb) The RAG flow and evaluating the system
 - [`rag-test-elasticsearch.ipynb`](notebooks/rag-test-elasticsearch.ipynb) The RAG flow and evaluating the system using ElasticSearch
 - [`evaluating-data-generation.ipynb`](notebooks/evaluation-data-generation.ipynb) Generating the ground truth dataset for retrieval evaluation
@@ -450,3 +450,5 @@ All Grafana configurations are in the grafana folder:
 - [dashboard.json](grafana/dashboard.json) the dashboard taken from the LLM Zoomcamp without changes
 
 To start the dashboard, first ensure Grafana is running and then go to [localhost:3000](http://localhost:3000).
+
+## Bonus
