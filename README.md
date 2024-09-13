@@ -59,6 +59,7 @@ The dataset is located in the `data` folder under `clean_data.csv`.
 - [Minsearch](https://github.com/alexeygrigorev/minsearch) for full-text search.
 - Flask as the API Interface.
 - OpenAI as an LLM (gpt-4o-mini)
+- Grafana for monitoring and PostgreSQL as the backend for it
 
 ## Running it
 
