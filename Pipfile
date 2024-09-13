@@ -24,6 +24,7 @@ notebook = "==7.1.2"
 ipywidgets = "*"
 hyperopt = {extras = ["all"], version = "*"}
 requests = "*"
+questionary = "*"
 
 [requires]
 python_version = "3.12"

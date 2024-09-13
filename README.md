@@ -66,7 +66,7 @@ The easiest way to run this application is with docker
 docker-compose up
 ```
 
-## Runnning locally
+## Preparation
 
 ### Installing the dependencies
 
@@ -86,9 +86,97 @@ Installing the dependencies:
 pipenv install --dev
 ```
 
-### Running the application:
+## Runnning locally
 
-For running the application locally:
+### Database configuration
+
+Before the application starts for the first time, the database needs to be initialized.
+
+First, run `postgres`:
+
+```bash
+docker-compose up postgres
+```
+
+Then run the [db_prep.py](recommendation_eat_assistant_flask/db_prep.py) script:
+
+```bash
+pipenv shell
+
+cd recommendation_eat_assistant_flask
+
+export POSTGRES_HOST=localhost
+python db_prep.py
+```
+
+To check the content of the database, use `pgcli`(already installed with pipeng):
+
+```bash
+pipenv run pgcli -h localhost -U your_username -d course_assistant -W
+```
+
+You can view the schema using the `\d` command:
+
+```bash
+\d conversations;
+```
+
+And select from this table:
+
+```SQL
+select * from conversations;
+```
+
+### Running with Docker (without compose)
+
+Sometimes you might want to run the application in Docker without Docker Compose. Now, you need to build the image:
+
+```bash
+docker build -t recommendation_eat_assistant_flask .
+```
+
+And run it:
+
+```bash
+docker run -it --rm \
+    -e OPENAI_API_KEY=${OPENAI_API_KEY} \
+    -e DATA_PATH="data/clean_data.csv" \
+    -p 5000:5000 \
+    recommendation_eat_assistant_flask
+```
+
+### Running the application with Docker-Compose:
+
+The easiest way to run the application is with `docker-compose`:
+
+```bash
+docker-compose up
+```
+
+### Running locally
+
+If you want to run the application locally, start only postgres and grafana:
+
+```bash
+docker-compose up postgres grafana
+```
+
+If you previously started all applications with `docker-compose up`, you need to stop the `app`:
+
+```bash
+docker-compose stop app
+```
+
+Now run the app on your host machine:
+
+```bash
+pipenv shell
+
+cd recommendation_eat_assistant_flask
+
+export POSTGRES_HOST=localhost
+python app.py
+```
 
 ### CURL
 
@@ -164,6 +252,24 @@ After sending it, you'll receive the acknowledgment:
 }
 ```
 
+## Using the application
+
+When the application is running, we can start using it.
+
+### CLI
+
+You can use the following python script to use the application
+
+```bash
+pipenv run python cli.py
+```
+
+You can also play with the [ground_thruth_dataset](data/ground-truth-retrieval.csv)
+
+```bash
+pipen run python cli.py --random
+```
+
 ### Using `requests`
 
 Alternatively, you can use [test.py](test.py) for testing it:
@@ -199,6 +305,13 @@ The code for the flask application is in the [recommendation_eat_assistant_flask
 - [`rag.py`](recommendation_eat_assistant_flask/rag.py) - The main RAG logic for building the retrieving the data and building the prompt
 - [`ingest.py`](recommendation_eat_assistant_flask/ingest.py) - loading the data into the knowledge base
 - [`minsearch.py`](recommendation_eat_assistant_flask/minsearch.py) - an in-memory search engine
+- [`db.py`](recommendation_eat_assistant_flask/db.py) - the logic for logging the requests and responses to postgres
+- [`db_prep.py`](recommendation_eat_assistant_flask/db_prep.py) - the script for initializing the database
+
+There are some code in the project root directory:
+
+- [`test.py`](test.py) - a script for testing the app with a predefined question
+- [`cli.py`](cli.py) - interactive CLI for the APP
 
 ## Experiments 
 
@@ -287,6 +400,48 @@ We opted for using `gpt-4o-mini`.
 
 ## Monitoring
 
-## Containerization
+We use Grafana for monitoring the application
 
-## Background
+It's accesible at [localhost:3000](http://localhost:3000)
+
+- Login: "admin"
+- Password: "admin"
+
+### Dashboards
+
+[Conversations](images/02_conversations.png) 
+
+1. This display a table with the last 5 conversations. It includes details such as the question, answer, relevance, and timestamps.
+
+[Pie chart feedback](images/03_pie_chart_feedback.png)
+
+2. A pie chart that visualizes the feedback from the users, showing the positive counts (+1) and the negtive (-1) feedbacks. It helps track user satisfaction.
+
+[Relevancy](images/04_relevancy.png)
+
+3. Some gauges charts representing the relevance of the responses provided during the conversations. 
+
+[OpenAI cost](images/05_OpenAI_cost.png)
+
+4. A time series graph depicting the cost associated with OpenAI usage over time. This panel helps monitor and anlyze the expenditure linked to the AI model's usage
+
+[Tokens](images/06_Tokens.png)
+
+5. Another time series tracking the number of tokens used in the conversations over time. This helps to understand the usage patterns and the volume of data processed.
+
+[Model used](images/07_model_used.png)
+
+6. A bar chart displaying the count of conversations based on the different models used. This panel provides insights into which AI models are most frequently used
+
+[Response time](images/08_response_time.png)
+
+A time series chart showing the response time of conversations over time.
+
+### Setting up Grafana
+
+All Grafana configurations are in the grafana folder:
+
+- [init.py](grafana/init.py) for initializing the datasource and the dashboard
+- [dashboard.json](grafana/dashboard.json) the dashboard taken from the LLM Zoomcamp without changes
+
+To start the dashboard, first ensure Grafana is running and then go to [localhost:3000](http://localhost:3000).
