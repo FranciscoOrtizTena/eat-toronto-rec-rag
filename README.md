@@ -1,5 +1,7 @@
 # Restaurant Suggestion Toronto (RAG)
 
+![Restaurant Suggestion Toronto](images/Toronto_eat.png)
+
 ## Overview
 
 Restaurant Suggestion Toronto (RAG) is a Retrieval-Augmented Generation (RAG) application designed to provide personalized restaurant suggestions in Toronto. By leveraging the Google Places API and advanced AI technologies, this project allows users to interact with a chatbot to get restaurant recommendations based on specific meal preferences, vibes, or cuisines in the Toronto area.
