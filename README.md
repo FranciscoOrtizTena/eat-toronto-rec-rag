@@ -4,6 +4,8 @@
 
 Restaurant Suggestion Toronto (RAG) is a Retrieval-Augmented Generation (RAG) application designed to provide personalized restaurant suggestions in Toronto. By leveraging the Google Places API and advanced AI technologies, this project allows users to interact with a chatbot to get restaurant recommendations based on specific meal preferences, vibes, or cuisines in the Toronto area.
 
+![APP](images/01_Running_APP.png)
+
 ## Problem Description
 
 In a bustling city like Toronto, there are thousands of restaurants offering diverse dining experiences. Whether you're a local or a visitor, it can be overwhelming to find the perfect place to eat that matches your specific tastes and needs. Traditional restaurant discovery tools often flood users with generic options, failing to cater to individual preferences like specific dishes, ambiance, or cuisine types.
@@ -409,31 +411,31 @@ It's accesible at [localhost:3000](http://localhost:3000)
 
 ### Dashboards
 
-[Conversations](images/02_conversations.png) 
+![Conversations](images/02_conversations.png) 
 
 1. This display a table with the last 5 conversations. It includes details such as the question, answer, relevance, and timestamps.
 
-[Pie chart feedback](images/03_pie_chart_feedback.png)
+![Pie chart feedback](images/03_pie_chart_feedback.png)
 
 2. A pie chart that visualizes the feedback from the users, showing the positive counts (+1) and the negtive (-1) feedbacks. It helps track user satisfaction.
 
-[Relevancy](images/04_relevancy.png)
+![Relevancy](images/04_relevancy.png)
 
 3. Some gauges charts representing the relevance of the responses provided during the conversations. 
 
-[OpenAI cost](images/05_OpenAI_cost.png)
+![OpenAI cost](images/05_OpenAI_cost.png)
 
 4. A time series graph depicting the cost associated with OpenAI usage over time. This panel helps monitor and anlyze the expenditure linked to the AI model's usage
 
-[Tokens](images/06_Tokens.png)
+![Tokens](images/06_Tokens.png)
 
 5. Another time series tracking the number of tokens used in the conversations over time. This helps to understand the usage patterns and the volume of data processed.
 
-[Model used](images/07_model_used.png)
+![Model used](images/07_model_used.png)
 
 6. A bar chart displaying the count of conversations based on the different models used. This panel provides insights into which AI models are most frequently used
 
-[Response time](images/08_response_time.png)
+![Response time](images/08_response_time.png)
 
 A time series chart showing the response time of conversations over time.
 
